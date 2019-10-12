@@ -6,15 +6,17 @@
 
 <style>
 :root {
-  --light-bg-color: #f2f3f4;
+  --light-bg-color: #f8f8f8;
   --dark-bg-color: #0f0f0f;
   --default-bg-color: var(--light-bg-color);
   --light-color: #555;
   --dark-color: #f5f5f5;
   --default-color: var(--light-color);
-  --darker-bg-color : #000;
-  --white-bg-color : #fff;
-  --nav-bg-color : var(--white-bg-color);
+  --darker-bg-color: #000;
+  --white-bg-color: #fff;
+  --nav-bg-color: var(--white-bg-color);
+  --dog-card-bg-default: var(--white-bg-color);
+  --border-color : #e6e6e6;
 }
 
 html {
@@ -25,6 +27,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1.6rem;
+  font-family: 'Raleway', sans-serif;
 }
 
 #app {

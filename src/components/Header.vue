@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="main-header">
     <div class="container">
       <nav class="nav">
         <div class="brand">
@@ -29,9 +29,10 @@ export default {
 </script>
 
 <style>
-header {
+.main-header {
   background-color: var(--nav-bg-color);
   padding: 2rem;
+  border-bottom: 1px solid var(--border-color);
 }
 .nav {
   display: flex;
@@ -55,6 +56,7 @@ header {
   display: flex;
   align-items: center;
   cursor: pointer;
+  font-weight: 600;
 }
 
 .menu ul li.icon::before {
