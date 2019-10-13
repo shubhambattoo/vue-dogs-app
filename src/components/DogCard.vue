@@ -1,13 +1,30 @@
 <template>
   <article class="dog-card">
     <header class="dog-card__header">
-      <div class="dog-card__title">
-        American Bully
-      </div>
-      <div class="dog-card__menu">
-        &nbsp;
-      </div>
+      <div class="dog-card__title">Beagle</div>
+      <div class="dog-card__menu">&nbsp;</div>
     </header>
+    <div class="dog-card__content">
+      <img
+        src="https://cdn2.thedogapi.com/images/Syd4xxqEm_1280.jpg"
+        alt="this image contains a picture of a dog"
+        class="dog-card__img"
+      />
+    </div>
+    <div class="dog-card__actions">
+      <div class="dog-card__actions__btns">
+        <span>
+          <button class="btn btn-empty">
+            <ion-icon name="heart-empty" class="icon"></ion-icon>
+          </button>
+        </span>
+        <span>
+          <button class="btn btn-empty">
+            <ion-icon name="ios-share" class="icon"></ion-icon>
+          </button>
+        </span>
+      </div>
+    </div>
   </article>
 </template>
 
@@ -23,13 +40,14 @@ export default {
   margin: 2rem;
   border-radius: 3px;
   border: 1px solid var(--border-color);
+  --padding: 1.6rem 1.6rem 1.6rem 2rem;
 }
 
 .dog-card__header {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid var(--border-color);
-  padding: 1.6rem 1.6rem 1.6rem 2rem;
+  padding: var(--padding);
 }
 
 .dog-card__title {
@@ -38,4 +56,30 @@ export default {
   text-transform: capitalize;
 }
 
+.dog-card__content {
+  min-height: 30rem;
+  user-select: none;
+  width: 100%;
+}
+
+.dog-card__img {
+  object-fit: contain;
+  width: inherit;
+}
+
+.dog-card__actions {
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding);
+  background-color: var(--dog-card-bg-default);
+  overflow: hidden;
+}
+
+.dog-card__actions .dog-card__actions__btns {
+  display: flex;
+}
+
+.dog-card__actions__btns span {
+  margin-right: 1rem;
+}
 </style>

@@ -16,7 +16,7 @@
   --white-bg-color: #fff;
   --nav-bg-color: var(--white-bg-color);
   --dog-card-bg-default: var(--white-bg-color);
-  --border-color : #e6e6e6;
+  --border-color: #e6e6e6;
 }
 
 html {
@@ -27,7 +27,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: 1.6rem;
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
 }
 
 #app {
@@ -49,5 +49,27 @@ body {
 .container {
   max-width: 90rem;
   margin: 0 auto;
+}
+
+.btn.btn-empty {
+  align-items: center;
+  background: 0 0;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex-grow: 0;
+  justify-content: center;
+  padding: 0;
+}
+
+.btn.btn.btn-empty .icon {
+  font-size: 3rem;
+}
+
+.btn {
+  color: var(--default-color);
+  font-family: "Raleway", sans-serif;
+  font-size: 1.4rem;
+  line-height: 18px;
 }
 </style>
