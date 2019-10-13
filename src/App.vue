@@ -28,11 +28,11 @@ body {
   padding: 0;
   font-size: 1.6rem;
   font-family: "Raleway", sans-serif;
+  background-color: var(--default-bg-color);
 }
 
 #app {
-  background-color: var(--default-bg-color);
-  height: 100vh;
+  /* height: 100vh; */
   color: var(--default-color);
 }
 

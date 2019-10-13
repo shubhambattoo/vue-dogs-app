@@ -1,15 +1,11 @@
 <template>
   <article class="dog-card">
     <header class="dog-card__header">
-      <div class="dog-card__title">Beagle</div>
+      <div class="dog-card__title">{{getName}}</div>
       <div class="dog-card__menu">&nbsp;</div>
     </header>
     <div class="dog-card__content">
-      <img
-        src="https://cdn2.thedogapi.com/images/Syd4xxqEm_1280.jpg"
-        alt="this image contains a picture of a dog"
-        class="dog-card__img"
-      />
+      <img :src="dog.url" alt="this image contains a picture of a dog" class="dog-card__img" />
     </div>
     <div class="dog-card__actions">
       <div class="dog-card__actions__btns">
@@ -30,7 +26,17 @@
 
 <script>
 export default {
-  name: "dogCard"
+  name: "dogCard",
+  props: ["dog"],
+  computed: {
+    getName() {
+      if (this.dog.breeds.length > 0) {
+        return this.dog.breeds[0].name;
+      } else {
+        return "Some doggo!";
+      }
+    }
+  }
 };
 </script>
 
@@ -38,6 +44,7 @@ export default {
 .dog-card {
   background-color: var(--dog-card-bg-default);
   margin: 2rem;
+  margin-bottom: 1rem;
   border-radius: 3px;
   border: 1px solid var(--border-color);
   --padding: 1.6rem 1.6rem 1.6rem 2rem;
@@ -57,9 +64,12 @@ export default {
 }
 
 .dog-card__content {
-  min-height: 30rem;
+  height: auto;
   user-select: none;
+  /* height: 100%; */
   width: 100%;
+
+  cursor: pointer;
 }
 
 .dog-card__img {
@@ -81,5 +91,11 @@ export default {
 
 .dog-card__actions__btns span {
   margin-right: 1rem;
+}
+
+@media screen and (max-width: 576px) {
+  .btn.btn.btn-empty .icon {
+    font-size: 2.4rem;
+  }
 }
 </style>
