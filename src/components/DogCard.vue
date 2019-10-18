@@ -4,14 +4,15 @@
       <div class="dog-card__title">{{getName}}</div>
       <div class="dog-card__menu">&nbsp;</div>
     </header>
-    <div class="dog-card__content">
+    <div class="dog-card__content" @dblclick="like">
       <img :src="dog.url" alt="this image contains a picture of a dog" class="dog-card__img" />
     </div>
     <div class="dog-card__actions">
       <div class="dog-card__actions__btns">
         <span>
-          <button class="btn btn-empty">
-            <ion-icon name="heart-empty" class="icon"></ion-icon>
+          <button class="btn btn-empty" @click="like">
+            <ion-icon name="heart-empty" class="icon" v-if="!liked"></ion-icon>
+            <ion-icon name="heart" class="icon heart--activated" v-if="liked"></ion-icon>
           </button>
         </span>
         <span>
@@ -28,6 +29,11 @@
 export default {
   name: "dogCard",
   props: ["dog"],
+  data () {
+    return {
+      liked : false
+    }
+  },
   computed: {
     getName() {
       if (this.dog.breeds.length > 0) {
@@ -35,6 +41,17 @@ export default {
       } else {
         return "Some doggo!";
       }
+    }
+  },
+  methods : {
+    like () {
+      if(this.liked) {
+        return false;
+      }
+      const likes = JSON.parse(localStorage.getItem("likes"));
+      likes.push(this.dog);
+      localStorage.setItem("likes", JSON.stringify(likes));
+      this.liked = true;
     }
   }
 };
@@ -66,6 +83,7 @@ export default {
 .dog-card__content {
   height: auto;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
   /* height: 100%; */
   width: 100%;
 
@@ -91,6 +109,11 @@ export default {
 
 .dog-card__actions__btns span {
   margin-right: 1rem;
+}
+
+.icon.heart--activated {
+  color: rgb(230, 47, 47);
+  visibility: visible;
 }
 
 @media screen and (max-width: 576px) {

@@ -4,6 +4,18 @@
   </div>
 </template>
 
+<script>
+export default {
+  name : "app",
+  mounted () {
+    if (localStorage.getItem("likes")) {
+      return false;
+    }
+    localStorage.setItem("likes", JSON.stringify([]))
+  }
+}
+</script>
+
 <style>
 :root {
   --light-bg-color: #f8f8f8;
