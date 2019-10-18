@@ -2,8 +2,13 @@
   <div class="home">
     <Header />
     <main>
-      <div class="feed" v-if="!gettingDogs">
-        <DogCard v-for="dog in doggos" :dog="dog" :key="dog.id"  />
+      <div
+        class="feed"
+        v-infinite-scroll="getDoggos"
+        infinite-scroll-disabled="busy"
+        infinite-scroll-distance="10"
+      >
+        <DogCard v-for="dog in doggos" :dog="dog" :key="dog.id" />
       </div>
     </main>
   </div>
@@ -20,28 +25,34 @@ export default {
     Header,
     DogCard
   },
-  data () {
+  data() {
     return {
-      doggos : [],
-      gettingDogs : true
-    }
+      doggos: [],
+      busy: true,
+      page: 1,
+      limit: 8
+    };
   },
   methods: {
-    getDoggos(limit = 8, page = 1) {
+    getDoggos() {
+      this.busy = true;
       const apiKey = process.env.VUE_APP_API_KEY;
       const apiURL = "https://api.thedogapi.com/v1/images/search";
-
+      this.page = this.page === 0 ? 1 : this.page + 1;
       axios
-        .get(`${apiURL}?limit=${limit}&page=${page}&mime_types=jpg,png,gif`, {
-          headers: {
-            "x-api-key": apiKey
+        .get(
+          `${apiURL}?limit=${this.limit}&page=${this.page}&mime_types=jpg,png,gif`,
+          {
+            headers: {
+              "x-api-key": apiKey
+            }
           }
-        })
+        )
         .then(res => res.data)
         .then(data => {
           // console.log(data);
-          this.doggos = data;
-          this.gettingDogs = false;
+          this.doggos.push(...data);
+          this.busy = false;
         });
     }
   },

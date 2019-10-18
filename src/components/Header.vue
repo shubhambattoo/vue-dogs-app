@@ -4,7 +4,8 @@
       <nav class="nav">
         <div class="brand">
           <router-link to="/">
-            <img src="//via.placeholder.com/50" alt="brand image" />
+            <img src="../assets/logo.png" alt="brand image" />
+            <span class="brand__text">DoggoGram</span>
           </router-link>
         </div>
         <div class="menu">
@@ -34,9 +35,30 @@ export default {
   padding: 2rem;
   border-bottom: 1px solid var(--border-color);
 }
+
 .nav {
   display: flex;
 }
+
+.nav .brand a{
+  display: flex;
+  align-items: center;
+
+  color: var(--light-color);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.nav .brand span {
+  margin-left: .8rem;
+}
+
+.nav .brand img {
+  width: 5rem;
+  height: 5rem;
+}
+
 .menu {
   margin-left: auto;
   display: flex;
