@@ -45,7 +45,7 @@ export default {
   },
   methods : {
     like () {
-      if(this.liked) {
+      if(this.liked || this.isLiked) {
         return false;
       }
       const likes = JSON.parse(localStorage.getItem("likes"));
