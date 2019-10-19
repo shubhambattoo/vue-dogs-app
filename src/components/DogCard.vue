@@ -16,7 +16,7 @@
           </button>
         </span>
         <span>
-          <button class="btn btn-empty">
+          <button class="btn btn-empty" @click="share">
             <ion-icon name="ios-share" class="icon"></ion-icon>
           </button>
         </span>
@@ -29,10 +29,10 @@
 export default {
   name: "dogCard",
   props: ["dog", "isLiked"],
-  data () {
+  data() {
     return {
-      liked : false
-    }
+      liked: false
+    };
   },
   computed: {
     getName() {
@@ -43,15 +43,30 @@ export default {
       }
     }
   },
-  methods : {
-    like () {
-      if(this.liked || this.isLiked) {
+  methods: {
+    like() {
+      if (this.liked || this.isLiked) {
         return false;
       }
       const likes = JSON.parse(localStorage.getItem("likes"));
       likes.push(this.dog);
       localStorage.setItem("likes", JSON.stringify(likes));
       this.liked = true;
+    },
+    share() {
+      const that = this;
+      const message = `See this good doggo i found on https://doggogram.surge.sh, ${this.dog.url}`;
+      this.$copyText(message).then(
+        function() {
+          // alert("Copied");
+          that.$toasted.show("copied to clipboard!");
+          // console.log(e);
+        },
+        function() {
+          that.$toasted.show("cannot copy!");
+          // console.log(e);
+        }
+      );
     }
   }
 };
