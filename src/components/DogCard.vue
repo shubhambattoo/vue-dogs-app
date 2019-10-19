@@ -11,8 +11,8 @@
       <div class="dog-card__actions__btns">
         <span>
           <button class="btn btn-empty" @click="like">
-            <ion-icon name="heart-empty" class="icon" v-if="!liked"></ion-icon>
-            <ion-icon name="heart" class="icon heart--activated" v-if="liked"></ion-icon>
+            <ion-icon name="heart-empty" class="icon" v-if="!liked && !isLiked"></ion-icon>
+            <ion-icon name="heart" class="icon heart--activated" v-if="liked || isLiked"></ion-icon>
           </button>
         </span>
         <span>
@@ -28,7 +28,7 @@
 <script>
 export default {
   name: "dogCard",
-  props: ["dog"],
+  props: ["dog", "isLiked"],
   data () {
     return {
       liked : false

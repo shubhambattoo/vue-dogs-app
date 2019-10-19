@@ -1,19 +1,27 @@
 <template>
   <div id="app" class="light">
-    <router-view />
+    <Header />
+    <main>
+      <router-view />
+    </main>
   </div>
 </template>
 
 <script>
+import Header from "@/components/Header.vue";
+
 export default {
-  name : "app",
-  mounted () {
+  name: "app",
+  components: {
+    Header
+  },
+  mounted() {
     if (localStorage.getItem("likes")) {
       return false;
     }
-    localStorage.setItem("likes", JSON.stringify([]))
+    localStorage.setItem("likes", JSON.stringify([]));
   }
-}
+};
 </script>
 
 <style>

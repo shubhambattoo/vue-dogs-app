@@ -11,10 +11,10 @@
         <div class="menu">
           <ul>
             <li class="icon paw">
-              <router-link to="/">Breeds</router-link>
+              <router-link to="/breeds" active-class="isActive">Breeds</router-link>
             </li>
             <li class="icon heart">
-              <router-link to="/">Likes</router-link>
+              <router-link to="/likes" active-class="isActive">Likes</router-link>
             </li>
           </ul>
         </div>
@@ -30,6 +30,7 @@ export default {
 </script>
 
 <style>
+
 .main-header {
   background-color: var(--nav-bg-color);
   padding: 2rem;
@@ -40,7 +41,7 @@ export default {
   display: flex;
 }
 
-.nav .brand a{
+.nav .brand a {
   display: flex;
   align-items: center;
 
@@ -51,7 +52,7 @@ export default {
 }
 
 .nav .brand span {
-  margin-left: .8rem;
+  margin-left: 0.8rem;
 }
 
 .nav .brand img {
@@ -105,4 +106,9 @@ export default {
   text-decoration: none;
   text-transform: uppercase;
 }
+
+.menu ul li a.isActive {
+  font-style: italic;
+}
+
 </style>
