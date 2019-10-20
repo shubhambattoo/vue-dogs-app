@@ -4,6 +4,7 @@ import router from './router'
 import infiniteScroll from 'vue-infinite-scroll'
 import Toasted from 'vue-toasted'
 import VueClipboard from 'vue-clipboard2'
+import './registerServiceWorker'
 
 Vue.use(Toasted, { position: "top-center", duration: "1000" })
 Vue.use(infiniteScroll)
